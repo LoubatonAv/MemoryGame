@@ -31,6 +31,28 @@ body {
 
     .card {
       position: relative;
+
+      .front {
+        transform: rotateY(90deg);
+        transition: all ease-in 0.2s;
+        position: absolute;
+      }
+
+      .back {
+        transition: all ease-in 0.2s;
+        transition-delay: 0.2s;
+      }
+    }
+
+    .flipped {
+      .front {
+        transform: rotateY(0deg);
+        transition-delay: 0.2s;
+      }
+      .back {
+        transform: rotateY(90deg);
+        transition-delay: 0s;
+      }
     }
 
     .card img {

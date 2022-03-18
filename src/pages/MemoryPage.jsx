@@ -32,11 +32,19 @@ export const MemoryPage = () => {
   useEffect(() => {
     if (firstPick && secondPick) {
       if (firstPick.name === secondPick.name) {
-        console.log('Match!');
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.name === firstPick.name) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+        });
         reset();
       } else {
         console.log('Dont match');
-        reset();
+        setTimeout(() => reset(), 1000);
       }
     }
   }, [firstPick, secondPick]);
@@ -46,13 +54,15 @@ export const MemoryPage = () => {
     setSecondPick(null);
   };
 
-  return (
+  console.log('cards:', cards);
+
+  https: return (
     <div className='App'>
       <h1>Magic Match</h1>
       <button onClick={shuffleImages} className='new-game-btn'>
         New Game
       </button>
-      <CardList cards={cards} handlePick={handlePick} />
+      <CardList cards={cards} handlePick={handlePick} firstPick={firstPick} secondPick={secondPick} />
     </div>
   );
 };
