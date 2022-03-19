@@ -9,6 +9,22 @@ body {
   max-width: 860px;
   margin: 40px auto;
 
+  .screen-details {
+    position: fixed;
+    opacity: 0.9;
+    inset: 0;
+    background-color: black;
+    z-index: 5;
+  }
+
+  .victory {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
   .steps {
     font-size: 2em;
   }

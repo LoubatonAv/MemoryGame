@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardList } from '../cmps/CardList';
+import { Modal } from '../cmps/Modal';
 
 const images = [
   { name: 'Ahri', matched: false },
@@ -16,6 +17,7 @@ export const MemoryPage = () => {
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [victoryModal, setVictoryModal] = useState(false);
 
   const shuffleImages = () => {
     const shuffledImages = [...images, ...images]
@@ -58,6 +60,7 @@ export const MemoryPage = () => {
   }, []);
 
   useEffect(() => {
+    if (steps < 6) return;
     isGameOver();
   }, [secondPick]);
 
@@ -65,7 +68,15 @@ export const MemoryPage = () => {
     let result = cards.every(function (e) {
       return e.matched === true;
     });
-    if (result) alert('Nice!');
+    if (result) {
+      console.log('result:', result);
+
+      setVictoryModal(true);
+    }
+  };
+
+  const onCloseModal = () => {
+    setVictoryModal(false);
   };
 
   const reset = () => {
@@ -77,6 +88,7 @@ export const MemoryPage = () => {
 
   return (
     <div className='App'>
+      {victoryModal && <div className='screen-details' onClick={onCloseModal}></div>}
       <h1>League Memory Game!</h1>
       <CardList
         cards={cards}
@@ -90,6 +102,7 @@ export const MemoryPage = () => {
         New Game
       </button>
       <div className='steps'>Turns : {steps}</div>
+      {victoryModal ? <Modal /> : ''}
     </div>
   );
 };
