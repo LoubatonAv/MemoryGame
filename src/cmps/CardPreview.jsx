@@ -1,9 +1,11 @@
 import React from 'react';
 import cover from '../assets/imgs/cover.png';
 
-export const CardPreview = ({ card, handlePick, flipped }) => {
+export const CardPreview = ({ card, handlePick, flipped, disabled }) => {
   const handleClick = () => {
-    handlePick(card);
+    if (!disabled) {
+      handlePick(card);
+    }
   };
 
   return (

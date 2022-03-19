@@ -15,11 +15,15 @@ export const MemoryPage = () => {
   const [steps, setSteps] = useState(0);
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const shuffleImages = () => {
     const shuffledImages = [...images, ...images]
       .sort(() => Math.random() - 0.5)
       .map((image) => ({ ...image, id: Math.random() }));
+
+    setFirstPick(null);
+    setSecondPick(null);
     setCards(shuffledImages);
     setSteps(0);
   };
@@ -31,6 +35,7 @@ export const MemoryPage = () => {
 
   useEffect(() => {
     if (firstPick && secondPick) {
+      setDisabled(true);
       if (firstPick.name === secondPick.name) {
         setCards((prevCards) => {
           return prevCards.map((card) => {
@@ -43,26 +48,48 @@ export const MemoryPage = () => {
         });
         reset();
       } else {
-        console.log('Dont match');
         setTimeout(() => reset(), 1000);
       }
     }
   }, [firstPick, secondPick]);
 
+  useEffect(() => {
+    shuffleImages();
+  }, []);
+
+  useEffect(() => {
+    isGameOver();
+  }, [secondPick]);
+
+  const isGameOver = () => {
+    let result = cards.every(function (e) {
+      return e.matched === true;
+    });
+    if (result) alert('Nice!');
+  };
+
   const reset = () => {
     setFirstPick(null);
     setSecondPick(null);
+    setSteps((prevState) => prevState + 1);
+    setDisabled(false);
   };
 
-  console.log('cards:', cards);
-
-  https: return (
+  return (
     <div className='App'>
-      <h1>Magic Match</h1>
+      <h1>League Memory Game!</h1>
+      <CardList
+        cards={cards}
+        handlePick={handlePick}
+        firstPick={firstPick}
+        secondPick={secondPick}
+        disabled={disabled}
+        steps={steps}
+      />
       <button onClick={shuffleImages} className='new-game-btn'>
         New Game
       </button>
-      <CardList cards={cards} handlePick={handlePick} firstPick={firstPick} secondPick={secondPick} />
+      <div className='steps'>Turns : {steps}</div>
     </div>
   );
 };
