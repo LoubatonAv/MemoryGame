@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/MemoryGame/static/css/main.80367cb3.css",
+    "main.js": "/MemoryGame/static/js/main.c8eecd48.js",
+    "static/media/victory.png": "/MemoryGame/static/media/victory.9dc0cacb48f2c48a9ac2.png",
+    "static/media/android-chrome-512x512.png": "/MemoryGame/static/media/android-chrome-512x512.22a984707bc9c313497a.png",
+    "static/media/Tryndamere.png": "/MemoryGame/static/media/Tryndamere.018a7330e4e3e3edfe65.png",
+    "static/media/Irelia.png": "/MemoryGame/static/media/Irelia.188cd20349862edf4bcc.png",
+    "static/media/Evelynn.png": "/MemoryGame/static/media/Evelynn.dc36f67d46c7f25a6014.png",
+    "static/media/Ahri.png": "/MemoryGame/static/media/Ahri.efbf0d403c1d74f5d78b.png",
+    "static/media/Kaisa.png": "/MemoryGame/static/media/Kaisa.06611849c049c3684527.png",
+    "static/media/cover.png": "/MemoryGame/static/media/cover.4b072847d24f79fe1b8b.png",
+    "static/media/Akshan.png": "/MemoryGame/static/media/Akshan.3cb8ec3172d7f4d626f9.png",
+    "static/media/android-chrome-192x192.png": "/MemoryGame/static/media/android-chrome-192x192.d4853ac1f77ffd32ef62.png",
+    "static/media/apple-touch-icon.png": "/MemoryGame/static/media/apple-touch-icon.bdecc1c4f5416eb9c002.png",
+    "index.html": "/MemoryGame/index.html",
+    "main.80367cb3.css.map": "/MemoryGame/static/css/main.80367cb3.css.map",
+    "main.c8eecd48.js.map": "/MemoryGame/static/js/main.c8eecd48.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80367cb3.css",
+    "static/js/main.c8eecd48.js"
+  ]
+}
